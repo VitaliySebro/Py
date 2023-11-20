@@ -1,0 +1,41 @@
+import random
+
+class Player:
+    def init(self, name):
+        self.name = name
+        self.score = 0
+
+    def roll_dice(self):
+        return random.randint(1, 6)
+
+class Game:
+    def init(self, players):
+        self.players = [Player(player) for player in players]
+
+    def play_round(self):
+        for player in self.players:
+            roll = player.roll_dice()
+            print(f"{player.name} кидає кубик і випадає {roll} очок.")
+            player.score += roll
+
+    def determine_winner(self):
+        max_score = max(player.score for player in self.players)
+        winners = [player for player in self.players if player.score == max_score]
+        if len(winners) == 1:
+            print(f"{winners[0].name} перемагає з результатом {winners[0].score} очок!")
+        else:
+            print("Нічия!")
+
+if name == "main":
+    num_players = int(input("Введіть кількість гравців: "))
+    players = [input(f"Ім'я гравця {i + 1}: ") for i in range(num_players)]
+
+    game = Game(players)
+
+    num_rounds = 5
+    for round in range(num_rounds):
+        print(f"Раунд {round + 1}:")
+        game.play_round()
+
+    print("\nРезультати:")
+    game.determine_winner()
