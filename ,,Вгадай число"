@@ -1,6 +1,6 @@
 import random
 print("Вітаємо у грі! Правила прості: спробуйте відгадати число.")
-a = random.randint(0, 101)
+a = random.randint(1, 100)
 b = 0
 while True:
     c = int(input("Введіть свій варіант числа: "))
