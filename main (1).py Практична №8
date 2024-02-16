@@ -1,0 +1,24 @@
+class CreditCard:
+    def __init__(self, card_number, cardholder_name, expiration_date, cvv, balance=0, credit_limit=1000):
+        self.card_number = card_number
+        self.cardholder_name = cardholder_name
+        self.expiration_date = expiration_date
+        self.cvv = cvv
+        self.balance = balance
+        self.credit_limit = credit_limit
+
+    def make_purchase(self, amount):
+        if amount <= self.available_credit():
+            self.balance += amount
+            return f"Purchase of {amount} made successfully."
+        else:
+            return "Insufficient credit limit."
+
+    def make_payment(self, amount):
+        self.balance -= amount
+
+    def available_credit(self):
+        return self.credit_limit - self.balance
+
+    def get_balance(self):
+        return self.balance
